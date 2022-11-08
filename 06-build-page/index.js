@@ -41,14 +41,14 @@ function picker() {
         copyFile('06-build-page/assets', '06-build-page/project-dist/assets/')
         
         fs.copyFile('06-build-page/template.html', '06-build-page/project-dist/index.html', ()=>{
-            fs.readFile('06-build-page/project-dist/template.html', (e, data)=>{
+            fs.readFile('06-build-page/project-dist/index.html', (e, data)=>{
                 let array = data.toString().split('\n');
                 for(let i=0;i<array.length;i++){
                     if(array[i].trim()==='{{header}}'){
                         fs.readFile('06-build-page/components/header.html', (e, temp)=>{
                             array[i]=temp;
                             result = array.join('\n')
-                            fs.writeFile('06-build-page/project-dist/template.html', result, ()=>{
+                            fs.writeFile('06-build-page/project-dist/index.html', result, ()=>{
 
                             })
                         })
@@ -57,7 +57,7 @@ function picker() {
                         fs.readFile('06-build-page/components/footer.html', (e, temp)=>{
                             array[i]=temp;
                             result = array.join('\n')
-                            fs.writeFile('06-build-page/project-dist/template.html',result, ()=>{
+                            fs.writeFile('06-build-page/project-dist/index.html',result, ()=>{
 
                             })
                         })
@@ -66,7 +66,7 @@ function picker() {
                         fs.readFile('06-build-page/components/articles.html', (e, temp)=>{
                             array[i]=temp;
                             result = array.join('\n')
-                            fs.writeFile('06-build-page/project-dist/template.html',result, ()=>{
+                            fs.writeFile('06-build-page/project-dist/index.html',result, ()=>{
 
                             })
                         })
