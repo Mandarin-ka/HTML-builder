@@ -4,17 +4,19 @@ function picker() {
     let root='06-build-page/styles';
     fs.mkdir('06-build-page/project-dist', ()=>{
         let wrFile = fs.createWriteStream('06-build-page/project-dist/style.css')
-        let files = fs.readdirSync('06-build-page/styles')
-        
-        for(let i = 0; i < files.length; i++) {
-            let name = [root, files[i]].join('/');
-            name = path.normalize(name);
-            if(name.split('.').at(-1)==='css'){
-                fs.readFile(name,'utf8', (e,d)=> {
-                    wrFile.write(d)
-                })
+        fs.readdir('06-build-page/styles', (e, files)=>{
+            for(let i = 0; i < files.length; i++) {
+                let name = [root, files[i]].join('/');
+                name = path.normalize(name);
+                if(name.split('.').at(-1)==='css'){
+                    fs.readFile(name,'utf8', (e,d)=> {
+                        wrFile.write(d)
+                    })
+                }
             }
-        }
+        })
+        
+        
         
       
         function copyFile (root) {

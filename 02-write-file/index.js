@@ -12,8 +12,8 @@ process.stdin.on('keypress', (string, key) => {
     
     string !== ' ' && string !== '\n' ? exit += string : exit = '';
     if((key.ctrl === true && key == 'c') || exit ==='exit'){ 
-        wrFile.write(result.slice(0, result.length-4));
         console.log('До свидания!')
+        wrFile.write(result.slice(0, result.length-4));
         process.exit();
     }
     
